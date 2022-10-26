@@ -16,6 +16,13 @@ public class UserRegistration {
 
         final String FIRST_NAME_PATTERN = "^[A-Z][a-z]{2,}$";
 
+        System.out.println("Enter last Name: ");
+        String lastName = scanner.next();
+
+        final String LAST_NAME_PATTERN = FIRST_NAME_PATTERN;
+
         System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
+        System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
+
     }
 }
