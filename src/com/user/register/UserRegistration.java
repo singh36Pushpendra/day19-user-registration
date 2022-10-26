@@ -26,9 +26,16 @@ public class UserRegistration {
 
         final String EMAIL_PATTERN = "^[a-zA-Z]+([.][a-zA-Z0-9]{1,})*[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{1,})*$";
 
+        scanner.nextLine();
+        System.out.println("Enter Mobile Number: ");
+        String mobileNum = scanner.nextLine();
+
+        final String MOBILE_NUM_PATTERN = "^[0-9]{1,3}[ ][6-9][0-9]{9}$";
+
         System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
         System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
         System.out.println("Is Email Valid?: " + validate(EMAIL_PATTERN, email));
+        System.out.println("Is Mobile No Valid?: " + validate(MOBILE_NUM_PATTERN, mobileNum));
 
     }
 }
