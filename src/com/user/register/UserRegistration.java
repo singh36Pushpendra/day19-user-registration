@@ -32,10 +32,16 @@ public class UserRegistration {
 
         final String MOBILE_NUM_PATTERN = "^[0-9]{1,3}[ ][6-9][0-9]{9}$";
 
+        System.out.println("Enter Password: ");
+        String password = scanner.next();
+
+        final String PASSWORD = "^.{8,}$";
+
         System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
         System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
         System.out.println("Is Email Valid?: " + validate(EMAIL_PATTERN, email));
         System.out.println("Is Mobile No Valid?: " + validate(MOBILE_NUM_PATTERN, mobileNum));
+        System.out.println("Is password Valid?: " + validate(PASSWORD,password));
 
     }
 }
