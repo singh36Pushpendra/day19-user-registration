@@ -35,7 +35,7 @@ public class UserRegistration {
         System.out.println("Enter Password: ");
         String password = scanner.next();
 
-        final String PASSWORD = "^(?=.*[A-Z]).{8,}$";
+        final String PASSWORD = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
 
         System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
         System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
