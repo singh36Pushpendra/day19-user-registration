@@ -25,7 +25,7 @@ public class UserRegistration {
         System.out.println("Enter Email Id: ");
         String email = scanner.next();
 
-        final String EMAIL_PATTERN = "^[a-zA-Z]+[+-]?([.]?[a-zA-Z0-9]{1,})*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{1,})?[,]?$";
+        final String EMAIL_PATTERN = "^[a-zA-Z]+([.+-]?[a-zA-Z0-9]{1,})*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?[,]?$";
 
         scanner.nextLine();
         System.out.println("Enter Mobile Number: ");
