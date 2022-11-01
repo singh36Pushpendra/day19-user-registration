@@ -1,5 +1,6 @@
 package com.user.register;
 
+import javax.swing.*;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -34,11 +35,35 @@ public class UserRegistration {
         System.out.println("Enter Password: ");
         String password = scanner.next();
 
-        System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
-        System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
-        System.out.println("Is Email Valid?: " + validate(EMAIL_PATTERN, email));
-        System.out.println("Is Mobile No Valid?: " + validate(MOBILE_NUM_PATTERN, mobileNum));
-        System.out.println("Is password Valid?: " + validate(PASSWORD,password));
+        if (validate(FIRST_NAME_PATTERN, firstName))
+            System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
+        else
+            throw new UserRegistrationException("Invalid User Detail: First Name" +
+                    " should have atleast 3 length and starts with capital letter!");
+
+        if (validate(LAST_NAME_PATTERN, lastName))
+            System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
+        else
+            throw new UserRegistrationException("Invalid User Detail: Last Name" +
+                    " should have atleast 3 length and starts with capital letter!");
+
+        if (validate(EMAIL_PATTERN, email))
+            System.out.println("Is Email Valid?: " + validate(EMAIL_PATTERN, email));
+        else
+            throw new UserRegistrationException("Invalid User Detail: Email" +
+                    " should have format like 'abc.xyz@bl.co.in'!");
+
+        if (validate(MOBILE_NUM_PATTERN, mobileNum))
+            System.out.println("Is Mobile No Valid?: " + validate(MOBILE_NUM_PATTERN, mobileNum));
+        else
+            throw new UserRegistrationException("Invalid User Detail: Mobile Number" +
+                    " should have country code and a 10 digit no. followed by a space!");
+
+        if (validate(PASSWORD,password))
+            System.out.println("Is password Valid?: " + validate(PASSWORD,password));
+        else
+            throw new UserRegistrationException("Invalid User Detail: Password should have atleast 1 capital, " +
+                    "1 Digit, 1 Special Character and atleast have length Eight!");
 
         System.out.println("\nValid Email Samples!");
         String[] validEmails = {
