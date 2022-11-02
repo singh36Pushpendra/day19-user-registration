@@ -1,6 +1,5 @@
 package com.user.register;
 
-import javax.swing.*;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -17,6 +16,7 @@ public class UserRegistration {
     }
 
     public static void main(String[] args) {
+        IValidateUser iValidateUser = (re, in) -> Pattern.compile(re).matcher(in).matches();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter First Name: ");
@@ -35,32 +35,32 @@ public class UserRegistration {
         System.out.println("Enter Password: ");
         String password = scanner.next();
 
-        if (validate(FIRST_NAME_PATTERN, firstName))
-            System.out.println("Is First Name Valid?: " + validate(FIRST_NAME_PATTERN, firstName));
+        if (iValidateUser.validate(FIRST_NAME_PATTERN, firstName))
+            System.out.println("Is First Name Valid?: " + iValidateUser.validate(FIRST_NAME_PATTERN, firstName));
         else
             throw new UserRegistrationException("Invalid User Detail: First Name" +
                     " should have atleast 3 length and starts with capital letter!");
 
-        if (validate(LAST_NAME_PATTERN, lastName))
-            System.out.println("Is Last Name Valid?: " + validate(LAST_NAME_PATTERN, lastName));
+        if (iValidateUser.validate(LAST_NAME_PATTERN, lastName))
+            System.out.println("Is Last Name Valid?: " + iValidateUser.validate(LAST_NAME_PATTERN, lastName));
         else
             throw new UserRegistrationException("Invalid User Detail: Last Name" +
                     " should have atleast 3 length and starts with capital letter!");
 
-        if (validate(EMAIL_PATTERN, email))
-            System.out.println("Is Email Valid?: " + validate(EMAIL_PATTERN, email));
+        if (iValidateUser.validate(EMAIL_PATTERN, email))
+            System.out.println("Is Email Valid?: " + iValidateUser.validate(EMAIL_PATTERN, email));
         else
             throw new UserRegistrationException("Invalid User Detail: Email" +
                     " should have format like 'abc.xyz@bl.co.in'!");
 
-        if (validate(MOBILE_NUM_PATTERN, mobileNum))
-            System.out.println("Is Mobile No Valid?: " + validate(MOBILE_NUM_PATTERN, mobileNum));
+        if (iValidateUser.validate(MOBILE_NUM_PATTERN, mobileNum))
+            System.out.println("Is Mobile No Valid?: " + iValidateUser.validate(MOBILE_NUM_PATTERN, mobileNum));
         else
             throw new UserRegistrationException("Invalid User Detail: Mobile Number" +
                     " should have country code and a 10 digit no. followed by a space!");
 
-        if (validate(PASSWORD,password))
-            System.out.println("Is password Valid?: " + validate(PASSWORD,password));
+        if (iValidateUser.validate(PASSWORD,password))
+            System.out.println("Is password Valid?: " + iValidateUser.validate(PASSWORD,password));
         else
             throw new UserRegistrationException("Invalid User Detail: Password should have atleast 1 capital, " +
                     "1 Digit, 1 Special Character and atleast have length Eight!");
@@ -79,7 +79,7 @@ public class UserRegistration {
         };
 
         for (String validEmail : validEmails)
-            System.out.println("Email " + validEmail + " valid?: " + validate(EMAIL_PATTERN, validEmail));
+            System.out.println("Email " + validEmail + " valid?: " + iValidateUser.validate(EMAIL_PATTERN, validEmail));
 
         System.out.println("\nInvalid Email Samples!");
         String[] invalidEmails = {
@@ -100,7 +100,7 @@ public class UserRegistration {
         System.out.println();
         for (String invalidEmail :
                 invalidEmails) {
-            System.out.println("Email " + invalidEmail + " valid?: " + validate(EMAIL_PATTERN, invalidEmail));
+            System.out.println("Email " + invalidEmail + " valid?: " + iValidateUser.validate(EMAIL_PATTERN, invalidEmail));
         }
     }
 }
